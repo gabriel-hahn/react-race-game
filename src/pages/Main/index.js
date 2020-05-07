@@ -1,5 +1,7 @@
 import React from 'react';
 
+import Car from '../../components/Car';
+
 import { BackgroundContainer, GameContainer } from './styles';
 
 const Main = () => {
@@ -8,6 +10,7 @@ const Main = () => {
       <BackgroundContainer />
       <GameContainer>
         {/* Car components and the rest here */}
+        <Car />
       </GameContainer>
     </>
   );
