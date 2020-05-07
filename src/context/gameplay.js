@@ -4,7 +4,7 @@ const GameplayContext = React.createContext();
 
 export const GameplayProvider = ({ children }) => {
   const [paused, setPaused] = useState(false);
-  const [startGame, setStartGame] = useState(true);
+  const [startGame, setStartGame] = useState(false);
 
   const handlePauseGame = () => {
     setPaused((previousPausedState) => !previousPausedState);
