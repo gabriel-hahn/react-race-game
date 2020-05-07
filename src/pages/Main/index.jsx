@@ -7,6 +7,7 @@ import { controls } from '../../enums/CarControls';
 import Car from '../../components/Car';
 import Modal from '../../components/Modal';
 import Paused from '../../components/Paused';
+import ObstaclesContainer from '../../components/ObstaclesContainer';
 
 import { Container, BackgroundContainer, GameContainer } from './styles';
 
@@ -34,9 +35,12 @@ const Main = () => {
       <BackgroundContainer />
       {!startGame && <Modal onStartGame={handleStartGameplay} />}
       {!!paused && <Paused />}
-      <GameContainer>
-        {!!startGame && <Car />}
-      </GameContainer>
+      {!!startGame && (
+        <GameContainer>
+          <ObstaclesContainer />
+          <Car />
+        </GameContainer>
+      )}
     </Container>
   );
 };
