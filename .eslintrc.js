@@ -22,6 +22,7 @@ module.exports = {
     'react',
   ],
   rules: {
+    'no-nested-ternary': 'off',
     'import/extensions': 'off',
     'import/prefer-default-export': 'off',
     'react/jsx-filename-extension': 'off',

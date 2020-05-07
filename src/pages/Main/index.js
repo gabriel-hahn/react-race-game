@@ -2,17 +2,16 @@ import React from 'react';
 
 import Car from '../../components/Car';
 
-import { BackgroundContainer, GameContainer } from './styles';
+import { Container, BackgroundContainer, GameContainer } from './styles';
 
 const Main = () => {
   return (
-    <>
+    <Container>
       <BackgroundContainer />
       <GameContainer>
-        {/* Car components and the rest here */}
         <Car />
       </GameContainer>
-    </>
+    </Container>
   );
 };
 

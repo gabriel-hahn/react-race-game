@@ -1,11 +1,6 @@
 import { useEffect, useState } from 'react';
 
-const CONTROLS = {
-  right: 'right',
-  left: 'left',
-  middle: 'middle',
-  pause: 'pause',
-};
+import { controls } from '../enums/CarControls';
 
 export const useKeyboardControls = () => {
   const [keyClicked, setKeyClicked] = useState('');
@@ -16,21 +11,21 @@ export const useKeyboardControls = () => {
         case 'ArrowLeft':
         case 'a':
         case 'A':
-          setKeyClicked(CONTROLS.left);
+          setKeyClicked(controls.left);
           break;
         case 'ArrowRight':
         case 'd':
         case 'D':
-          setKeyClicked(CONTROLS.right);
+          setKeyClicked(controls.right);
           break;
         case 'ArrowUp':
         case 's':
         case 'S':
-          setKeyClicked(CONTROLS.middle);
+          setKeyClicked(controls.middle);
           break;
         case 'Escape':
         case ' ':
-          setKeyClicked(CONTROLS.pause);
+          setKeyClicked(controls.pause);
           break;
         default:
           // No default updates

@@ -2,6 +2,11 @@ import styled from 'styled-components';
 
 import { contentCdn } from '../../styles/content';
 
+export const Container = styled.div`
+  display: flex;
+  justify-content: center;
+`;
+
 export const BackgroundContainer = styled.div`
   position: fixed;
   left: 0;
@@ -15,9 +20,8 @@ export const BackgroundContainer = styled.div`
 `;
 
 export const GameContainer = styled.div`
-  position: fixed;
-  height: 100%;
-  width: 100%;
+  height: 100vh;
+  width: 70vw;
   background-image: url(${contentCdn.roadBackground});
   background-position: center;
   background-repeat: no-repeat;
