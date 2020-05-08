@@ -1,4 +1,14 @@
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
+
+const fadeIn = keyframes`
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+`;
 
 export const Container = styled.div`
   position: absolute;
@@ -9,6 +19,10 @@ export const Container = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  opacity: 0;
+  transition: all 1s;
+  animation-name: ${fadeIn};
+  animation-duration: 4s;
 `;
 
 export const BackgroundContainer = styled.div`

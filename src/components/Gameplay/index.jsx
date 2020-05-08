@@ -1,6 +1,6 @@
 import React, { useEffect, useContext } from 'react';
 
-import GameplayContext from '../../context/gameplay';
+import GameplayContext, { Actions as GameplayActions } from '../../context/gameplay';
 import { controls } from '../../enums/CarControls';
 
 import Car from '../Car';
@@ -15,17 +15,27 @@ const hittedObstacles = new Set();
 let carPosition = controls.middle;
 
 const Gameplay = () => {
-  const { handleLostLife, handleIncrementLap, finished } = useContext(GameplayContext);
+  const { finished, lifes, dispatch } = useContext(GameplayContext);
 
   useEffect(() => {
     const lapInterval = setInterval(() => {
-      handleIncrementLap();
+      dispatch({ type: GameplayActions.INCREASE_LAP });
     }, LAP_INTERVAL);
 
     return () => {
       clearInterval(lapInterval);
     };
   }, []);
+
+  useEffect(() => {
+    if (lifes <= 0) {
+      dispatch({ type: GameplayActions.FINISH_GAME });
+
+      setTimeout(() => {
+        dispatch({ type: GameplayActions.RESTART });
+      }, 4000);
+    }
+  }, [lifes]);
 
   const checkCarPositioning = (position) => {
     carPosition = position;
@@ -42,7 +52,7 @@ const Gameplay = () => {
       if (obstaclePosition === carPosition) {
         hittedObstacles.add(id);
 
-        handleLostLife();
+        dispatch({ type: GameplayActions.DECREASE_LIFE });
       }
     });
   };

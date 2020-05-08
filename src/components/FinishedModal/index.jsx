@@ -11,7 +11,7 @@ const FinishedModal = () => {
     <>
       <BackgroundContainer />
       <Container>
-        <InputTitle>{username}</InputTitle>
+        <InputTitle>{username} - {lifes <= 0 ? 'You lose' : 'You win'}</InputTitle>
         <InputTitle>{laps} Laps</InputTitle>
         <InputTitle>{lifes} Lifes</InputTitle>
       </Container>

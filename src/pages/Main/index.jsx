@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useContext } from 'react';
 
-import GameplayContext from '../../context/gameplay';
+import GameplayContext, { Actions as GameplayActions } from '../../context/gameplay';
 import { useKeyboardControls } from '../../hooks/useKeyboardControls';
 import { controls } from '../../enums/CarControls';
 
@@ -15,25 +15,21 @@ let startGameInterval;
 const Main = () => {
   const [isCounterToStart, setIsCounterToStart] = useState(false);
   const [startCounter, setStartCounter] = useState(3);
+  const { paused, startGame, dispatch } = useContext(GameplayContext);
+
   const action = useKeyboardControls();
-  const {
-    paused,
-    startGame,
-    handlePauseGame,
-    handleStartGame,
-  } = useContext(GameplayContext);
 
   const handleStartGameplay = () => {
     setStartCounter(3);
     setIsCounterToStart(false);
     clearInterval(startGameInterval);
 
-    handleStartGame();
+    dispatch({ type: GameplayActions.START_GAME });
   };
 
   useEffect(() => {
     if (action === controls.pause && startGame) {
-      handlePauseGame();
+      dispatch({ type: GameplayActions.PAUSE_CONTINUE });
     }
   }, [action]);
 
