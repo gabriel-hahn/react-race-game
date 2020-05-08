@@ -7,7 +7,7 @@ import { controls } from '../../enums/CarControls';
 
 import { Container, CarImage } from './styles';
 
-const Car = () => {
+const Car = ({ checkCarPositioning }) => {
   const [carDirection, setCarDirection] = useState('');
   const { paused } = useContext(GameplayContext);
   const action = useKeyboardControls();
@@ -19,6 +19,7 @@ const Car = () => {
 
     if (action === controls.left || action === controls.middle || action === controls.right) {
       setCarDirection(action);
+      checkCarPositioning(action);
     }
   }, [action]);
 

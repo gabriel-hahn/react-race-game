@@ -6,8 +6,18 @@ import { Container } from './styles';
 
 const OBSTACLES_LOOP_FRAME = 130;
 
-const ObstaclesContainer = () => {
+const ObstaclesContainer = ({ checkObstaclesPositioning, hittedObstacles }) => {
   const [obstacles, setObstacles] = useState([]);
+  const [hittedList, setHittedList] = useState(hittedObstacles);
+
+  // useEffect(() => {
+  //   hittedList.forEach((hitted) => {
+  //     setObstacles((previousObstacles) => (
+  //       previousObstacles.filter((obstacle) => obstacle.id !== hitted.id)));
+  //   });
+
+  //   setHittedList([]);
+  // }, [hittedList]);
 
   const updateObstaclesPosition = (previousObstacles) => (
     previousObstacles
@@ -28,10 +38,16 @@ const ObstaclesContainer = () => {
     };
   };
 
+  const filterHitCheckObstacles = (previousObstacles) => (
+    previousObstacles.filter((obstacle) => obstacle.position >= 7)
+  );
+
   useEffect(() => {
     const obstaclesLoop = setInterval(() => {
       setObstacles((previousObstacles) => {
         const obstaclesUpdated = updateObstaclesPosition(previousObstacles);
+
+        checkObstaclesPositioning(filterHitCheckObstacles(obstaclesUpdated));
 
         return obstaclesUpdated;
       });

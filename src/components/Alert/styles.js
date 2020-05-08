@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const PausedContainer = styled.div`
+export const AlertContainer = styled.div`
   position: absolute;
   display: flex;
   align-items: center;
@@ -11,7 +11,7 @@ export const PausedContainer = styled.div`
   background-color: rgba(0, 0, 0, 0.7);
 `;
 
-export const PausedText = styled.h2`
+export const AlertText = styled.h2`
   font-size: 10rem;
   color: #fff;
 `;
