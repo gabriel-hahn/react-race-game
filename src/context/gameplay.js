@@ -17,7 +17,7 @@ const initialState = {
   finished: false,
   startGame: false,
   username: '',
-  lifes: 3,
+  lifes: 2,
   laps: 1,
 };
 

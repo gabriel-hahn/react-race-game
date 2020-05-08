@@ -1,6 +1,5 @@
-import React, { useState, useContext } from 'react';
-
-import GameplayContext, { Actions as GameplayActions } from '../../context/gameplay';
+import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 
 import {
   FormContainer,
@@ -11,14 +10,13 @@ import {
   InputDescription,
 } from './styles';
 
-const Modal = () => {
+const Modal = ({ onStartGame }) => {
   const [username, setUsername] = useState('');
-  const { dispatch } = useContext(GameplayContext);
 
   const handleStartGame = (event) => {
     event.preventDefault();
 
-    dispatch({ type: GameplayActions.START_GAME, payload: username });
+    onStartGame(username);
   };
 
   const handleInputNameChanged = (event) => {
@@ -37,6 +35,10 @@ const Modal = () => {
       </ModalContainer>
     </>
   );
+};
+
+Modal.propTypes = {
+  onStartGame: PropTypes.func.isRequired,
 };
 
 export default Modal;

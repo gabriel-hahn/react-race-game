@@ -11,6 +11,7 @@ import Gameplay from '../../components/Gameplay';
 import { Container, BackgroundContainer } from './styles';
 
 let startGameInterval;
+let username;
 
 const Main = () => {
   const [isCounterToStart, setIsCounterToStart] = useState(false);
@@ -24,7 +25,7 @@ const Main = () => {
     setIsCounterToStart(false);
     clearInterval(startGameInterval);
 
-    dispatch({ type: GameplayActions.START_GAME });
+    dispatch({ type: GameplayActions.START_GAME, payload: username });
   };
 
   useEffect(() => {
@@ -39,8 +40,10 @@ const Main = () => {
     }
   }, [startCounter]);
 
-  const handleStartCounter = () => {
+  const handleStartCounter = (name) => {
     setIsCounterToStart(true);
+
+    username = name;
 
     startGameInterval = setInterval(() => {
       setStartCounter((previousState) => previousState - 1);

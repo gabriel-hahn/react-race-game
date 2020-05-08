@@ -13,19 +13,29 @@ import { Container } from './styles';
 const LAP_INTERVAL = 20000;
 const hittedObstacles = new Set();
 let carPosition = controls.middle;
+let lapInterval = null;
 
 const Gameplay = () => {
-  const { finished, lifes, dispatch } = useContext(GameplayContext);
+  const {
+    finished,
+    lifes,
+    paused,
+    dispatch,
+  } = useContext(GameplayContext);
 
   useEffect(() => {
-    const lapInterval = setInterval(() => {
-      dispatch({ type: GameplayActions.INCREASE_LAP });
-    }, LAP_INTERVAL);
+    if (paused) {
+      clearInterval(lapInterval);
+    } else {
+      lapInterval = setInterval(() => {
+        dispatch({ type: GameplayActions.INCREASE_LAP });
+      }, LAP_INTERVAL);
+    }
 
     return () => {
       clearInterval(lapInterval);
     };
-  }, []);
+  }, [paused]);
 
   useEffect(() => {
     if (lifes <= 0) {
