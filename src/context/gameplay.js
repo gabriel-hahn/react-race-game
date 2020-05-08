@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 
 const GameplayContext = React.createContext();
 
@@ -43,6 +44,10 @@ export const GameplayProvider = ({ children }) => {
       {children}
     </GameplayContext.Provider>
   );
+};
+
+GameplayProvider.propTypes = {
+  children: PropTypes.element.isRequired,
 };
 
 export default GameplayContext;

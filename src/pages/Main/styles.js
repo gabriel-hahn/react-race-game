@@ -18,12 +18,3 @@ export const BackgroundContainer = styled.div`
   background-repeat: repeat-x;
   filter: blur(8px) grayscale(5);
 `;
-
-export const GameContainer = styled.div`
-  height: 100vh;
-  width: 70vw;
-  background-image: url(${contentCdn.roadBackground});
-  background-position: center;
-  background-repeat: no-repeat;
-  z-index: 1;
-`;

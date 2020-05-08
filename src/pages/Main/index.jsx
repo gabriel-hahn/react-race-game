@@ -4,16 +4,12 @@ import GameplayContext from '../../context/gameplay';
 import { useKeyboardControls } from '../../hooks/useKeyboardControls';
 import { controls } from '../../enums/CarControls';
 
-import Car from '../../components/Car';
 import Modal from '../../components/Modal';
 import Alert from '../../components/Alert';
-import GameInfo from '../../components/GameInfo';
-import ObstaclesContainer from '../../components/ObstaclesContainer';
+import Gameplay from '../../components/Gameplay';
 
-import { Container, BackgroundContainer, GameContainer } from './styles';
+import { Container, BackgroundContainer } from './styles';
 
-const hittedObstacles = new Set();
-let carPosition = controls.middle;
 let startGameInterval;
 
 const Main = () => {
@@ -25,12 +21,11 @@ const Main = () => {
     startGame,
     handlePauseGame,
     handleStartGame,
-    handleLostLife,
   } = useContext(GameplayContext);
 
   const handleStartGameplay = () => {
-    setIsCounterToStart(false);
     setStartCounter(3);
+    setIsCounterToStart(false);
     clearInterval(startGameInterval);
 
     handleStartGame();
@@ -56,41 +51,12 @@ const Main = () => {
     }, 1000);
   };
 
-  const checkCarPositioning = (position) => {
-    carPosition = position;
-  };
-
-  const checkObstaclesPositioning = (obstacles) => {
-    obstacles.forEach(({ id, roadPosition }) => {
-      const obstaclePosition = roadPosition === -1
-        ? controls.left
-        : (roadPosition === 0
-          ? controls.middle
-          : controls.right);
-
-      if (obstaclePosition === carPosition) {
-        hittedObstacles.add(id);
-
-        handleLostLife();
-      }
-    });
-  };
-
   return (
     <Container>
       <BackgroundContainer />
       {(!startGame && !isCounterToStart) && <Modal onStartGame={handleStartCounter} />}
       {(!!paused || !!isCounterToStart) && <Alert content={paused ? 'Pausado' : startCounter} />}
-      {!!startGame && (
-        <GameContainer>
-          <GameInfo />
-          <ObstaclesContainer
-            hittedObstacles={hittedObstacles}
-            checkObstaclesPositioning={checkObstaclesPositioning}
-          />
-          <Car checkCarPositioning={checkCarPositioning} />
-        </GameContainer>
-      )}
+      {!!startGame && <Gameplay />}
     </Container>
   );
 };

@@ -14,9 +14,9 @@ export const Container = styled.div`
 export const CarImage = styled.img.attrs({
   src: `${contentCdn.car}`,
 })`
-  height: 250px;
-  width: 250px;
+  height: 270px;
+  width: 270px;
   margin-left: ${(props) => (
-    props.carDirection === controls.right ? '34rem'
-      : (props.carDirection === controls.left ? '-34rem' : '-3rem'))};
+    props.carDirection === controls.right ? '36rem'
+      : (props.carDirection === controls.left ? '-36rem' : '-3rem'))};
 `;
