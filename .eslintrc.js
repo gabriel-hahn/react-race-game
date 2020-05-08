@@ -26,5 +26,6 @@ module.exports = {
     'import/extensions': 'off',
     'import/prefer-default-export': 'off',
     'react/jsx-filename-extension': 'off',
+    'react/jsx-one-expression-per-line': 'off',
   },
 };

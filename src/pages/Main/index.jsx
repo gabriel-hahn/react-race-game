@@ -7,6 +7,7 @@ import { controls } from '../../enums/CarControls';
 import Car from '../../components/Car';
 import Modal from '../../components/Modal';
 import Alert from '../../components/Alert';
+import GameInfo from '../../components/GameInfo';
 import ObstaclesContainer from '../../components/ObstaclesContainer';
 
 import { Container, BackgroundContainer, GameContainer } from './styles';
@@ -82,6 +83,7 @@ const Main = () => {
       {(!!paused || !!isCounterToStart) && <Alert content={paused ? 'Pausado' : startCounter} />}
       {!!startGame && (
         <GameContainer>
+          <GameInfo />
           <ObstaclesContainer
             hittedObstacles={hittedObstacles}
             checkObstaclesPositioning={checkObstaclesPositioning}
