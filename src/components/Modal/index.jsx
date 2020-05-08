@@ -1,5 +1,7 @@
-import React from 'react';
+import React, { useState, useContext } from 'react';
 import PropTypes from 'prop-types';
+
+import GameplayContext from '../../context/gameplay';
 
 import {
   FormContainer,
@@ -11,10 +13,19 @@ import {
 } from './styles';
 
 const Modal = ({ onStartGame }) => {
+  const [username, setUsername] = useState('');
+  const { handleUsernameAdd } = useContext(GameplayContext);
+
   const handleStartGame = (event) => {
     event.preventDefault();
 
+    handleUsernameAdd(username);
+
     onStartGame();
+  };
+
+  const handleInputNameChanged = (event) => {
+    setUsername(event.target.value);
   };
 
   return (
@@ -23,7 +34,7 @@ const Modal = ({ onStartGame }) => {
       <ModalContainer>
         <FormContainer>
           <InputTitle>Nome</InputTitle>
-          <InputDescription placeholder="Ex: Airton Senna" />
+          <InputDescription onChange={handleInputNameChanged} placeholder="Ex: Airton Senna" />
           <StartButton onClick={handleStartGame}>Iniciar Corrida</StartButton>
         </FormContainer>
       </ModalContainer>

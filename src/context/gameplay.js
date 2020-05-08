@@ -5,7 +5,9 @@ const GameplayContext = React.createContext();
 
 export const GameplayProvider = ({ children }) => {
   const [paused, setPaused] = useState(false);
-  const [startGame, setStartGame] = useState(true);
+  const [finished, setFinished] = useState(false);
+  const [startGame, setStartGame] = useState(false);
+  const [username, setUsername] = useState('');
   const [lifes, setLifes] = useState(3);
   const [laps, setLaps] = useState(1);
 
@@ -17,26 +19,45 @@ export const GameplayProvider = ({ children }) => {
     setStartGame((previousStartGameState) => !previousStartGameState);
   };
 
+  const handleUsernameAdd = (name) => {
+    setUsername(name);
+  };
+
   const handleGameOver = () => {
-    // Handle game over, changing the gameplay status and save points.
+    setFinished(true);
+  };
+
+  const handleRestartGame = () => {
+    // Restart game
   };
 
   const handleLostLife = () => {
-    setLifes((lifeState) => lifeState - 1);
+    setLifes((lifeState) => {
+      const updatedLife = lifeState - 1;
+
+      if (updatedLife === 0) {
+        handleGameOver();
+      }
+
+      return updatedLife;
+    });
   };
 
   const handleIncrementLap = () => {
-
+    setLaps((lapState) => lapState + 1);
   };
 
   return (
     <GameplayContext.Provider value={{
       handleIncrementLap,
+      handleUsernameAdd,
       handlePauseGame,
       handleStartGame,
       handleLostLife,
-      paused,
+      finished,
       startGame,
+      username,
+      paused,
       lifes,
       laps,
     }}
