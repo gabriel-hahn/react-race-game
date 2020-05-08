@@ -10,7 +10,7 @@ export const Container = styled.div`
 `;
 
 export const ObstacleImage = styled.img`
-  width: ${(props) => `${props.position * 2}rem`};
+  width: ${(props) => `${props.position * 1.8}rem`};
   margin-top: ${(props) => `${props.position * 2.5}rem`};
-  margin-left: ${(props) => `${props.roadPosition * 2}rem`};
+  margin-left: ${(props) => `${props.roadPosition * props.position * 3.3}rem`};
 `;

@@ -17,7 +17,7 @@ const ObstaclesContainer = () => {
 
   const createNewRandomObstacle = () => {
     const randomNumber = Math.random() * 10; // Between 0 and 10.
-    const roadPosition = randomNumber <= 3.5 ? 1 : (randomNumber <= 6.5 ? 2 : 3);
+    const roadPosition = randomNumber <= 3.5 ? -1 : (randomNumber <= 6.5 ? 0 : 1);
     const imageIndex = randomNumber % 2 === 0 ? 1 : 2;
 
     return {

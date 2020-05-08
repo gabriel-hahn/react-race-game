@@ -21,9 +21,9 @@ const Modal = ({ onStartGame }) => {
       <BackgroundContainer />
       <ModalContainer>
         <FormContainer>
-          <InputTitle>Name</InputTitle>
-          <InputDescription placeholder="E.g: Airton Senna" />
-          <StartButton onClick={handleStartGame}>Start</StartButton>
+          <InputTitle>Nome</InputTitle>
+          <InputDescription placeholder="Ex: Airton Senna" />
+          <StartButton onClick={handleStartGame}>Iniciar Corrida</StartButton>
         </FormContainer>
       </ModalContainer>
     </>

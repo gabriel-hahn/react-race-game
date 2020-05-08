@@ -4,7 +4,7 @@ import { PausedContainer, PausedText } from './styles';
 
 const Paused = () => (
   <PausedContainer>
-    <PausedText>Paused</PausedText>
+    <PausedText>Pausado</PausedText>
   </PausedContainer>
 );
 
