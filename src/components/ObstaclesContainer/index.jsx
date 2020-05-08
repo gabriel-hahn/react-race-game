@@ -1,4 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
+
+import GameplayContext from '../../context/gameplay';
 
 import Obstacle from '../Obstacle';
 
@@ -10,8 +12,12 @@ const HIT_POSITION = 7;
 const LAST_OBSTACLE_POSITION = 12;
 const NEXT_OBSTACLE_POSITION_MULT = 1.3;
 
+let obstaclesLoop = null;
+let obstaclesCreation = null;
+
 const ObstaclesContainer = ({ checkObstaclesPositioning, hittedObstacles }) => {
   const [obstacles, setObstacles] = useState([]);
+  const { paused } = useContext(GameplayContext);
 
   useEffect(() => {
     setObstacles((previousObstacles) => previousObstacles
@@ -45,27 +51,32 @@ const ObstaclesContainer = ({ checkObstaclesPositioning, hittedObstacles }) => {
   );
 
   useEffect(() => {
-    const obstaclesLoop = setInterval(() => {
-      setObstacles((previousObstacles) => {
-        const obstaclesUpdated = updateObstaclesPosition(previousObstacles);
+    if (paused) {
+      clearInterval(obstaclesLoop);
+      clearInterval(obstaclesCreation);
+    } else {
+      obstaclesLoop = setInterval(() => {
+        setObstacles((previousObstacles) => {
+          const obstaclesUpdated = updateObstaclesPosition(previousObstacles);
 
-        checkObstaclesPositioning(filterHitCheckObstacles(obstaclesUpdated));
+          checkObstaclesPositioning(filterHitCheckObstacles(obstaclesUpdated));
 
-        return obstaclesUpdated;
-      });
-    }, OBSTACLES_LOOP_FRAME);
+          return obstaclesUpdated;
+        });
+      }, OBSTACLES_LOOP_FRAME);
 
-    const obstaclesCreation = setInterval(() => {
-      const newObstacle = createNewRandomObstacle();
+      obstaclesCreation = setInterval(() => {
+        const newObstacle = createNewRandomObstacle();
 
-      setObstacles((previousObstacles) => [...previousObstacles, newObstacle]);
-    }, OBSTACLES_CREATION_FRAME);
+        setObstacles((previousObstacles) => [...previousObstacles, newObstacle]);
+      }, OBSTACLES_CREATION_FRAME);
+    }
 
     return () => {
       clearInterval(obstaclesLoop);
       clearInterval(obstaclesCreation);
     };
-  }, []);
+  }, [paused]);
 
   return obstacles.length > 0 ? (
     <Container>
