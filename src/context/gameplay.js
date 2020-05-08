@@ -15,10 +15,19 @@ export const GameplayProvider = ({ children }) => {
     setStartGame((previousStartGameState) => !previousStartGameState);
   };
 
+  const handleGameOver = () => {
+    // Handle game over, changing the gameplay status and save points.
+  };
+
+  const handleLostLife = () => {
+
+  };
+
   return (
     <GameplayContext.Provider value={{
       handlePauseGame,
       handleStartGame,
+      handleLostLife,
       paused,
       startGame,
     }}

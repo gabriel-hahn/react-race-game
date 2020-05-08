@@ -11,9 +11,9 @@ import ObstaclesContainer from '../../components/ObstaclesContainer';
 
 import { Container, BackgroundContainer, GameContainer } from './styles';
 
+const hittedObstacles = new Set();
 let carPosition = controls.middle;
 let startGameInterval;
-let hittedObstacles = [];
 
 const Main = () => {
   const [isCounterToStart, setIsCounterToStart] = useState(false);
@@ -24,6 +24,7 @@ const Main = () => {
     startGame,
     handlePauseGame,
     handleStartGame,
+    handleLostLife,
   } = useContext(GameplayContext);
 
   const handleStartGameplay = () => {
@@ -67,7 +68,9 @@ const Main = () => {
           : controls.right);
 
       if (obstaclePosition === carPosition) {
-        hittedObstacles.push(id);
+        hittedObstacles.add(id);
+
+        handleLostLife();
       }
     });
   };

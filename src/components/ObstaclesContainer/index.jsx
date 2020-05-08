@@ -5,24 +5,26 @@ import Obstacle from '../Obstacle';
 import { Container } from './styles';
 
 const OBSTACLES_LOOP_FRAME = 130;
+const OBSTACLES_CREATION_FRAME = 800;
+const HIT_POSITION = 7;
+const LAST_OBSTACLE_POSITION = 12;
+const NEXT_OBSTACLE_POSITION_MULT = 1.3;
 
 const ObstaclesContainer = ({ checkObstaclesPositioning, hittedObstacles }) => {
   const [obstacles, setObstacles] = useState([]);
-  const [hittedList, setHittedList] = useState(hittedObstacles);
 
-  // useEffect(() => {
-  //   hittedList.forEach((hitted) => {
-  //     setObstacles((previousObstacles) => (
-  //       previousObstacles.filter((obstacle) => obstacle.id !== hitted.id)));
-  //   });
-
-  //   setHittedList([]);
-  // }, [hittedList]);
+  useEffect(() => {
+    setObstacles((previousObstacles) => previousObstacles
+      .filter((obstacle) => !hittedObstacles.has(obstacle.id)));
+  }, [hittedObstacles.size]);
 
   const updateObstaclesPosition = (previousObstacles) => (
     previousObstacles
-      .filter((obstacle) => obstacle.position <= 12)
-      .map((obstacle) => ({ ...obstacle, position: obstacle.position + 1.3 }))
+      .filter((obstacle) => obstacle.position <= LAST_OBSTACLE_POSITION)
+      .map((obstacle) => ({
+        ...obstacle,
+        position: obstacle.position + NEXT_OBSTACLE_POSITION_MULT,
+      }))
   );
 
   const createNewRandomObstacle = () => {
@@ -39,7 +41,7 @@ const ObstaclesContainer = ({ checkObstaclesPositioning, hittedObstacles }) => {
   };
 
   const filterHitCheckObstacles = (previousObstacles) => (
-    previousObstacles.filter((obstacle) => obstacle.position >= 7)
+    previousObstacles.filter((obstacle) => obstacle.position >= HIT_POSITION)
   );
 
   useEffect(() => {
@@ -57,7 +59,7 @@ const ObstaclesContainer = ({ checkObstaclesPositioning, hittedObstacles }) => {
       const newObstacle = createNewRandomObstacle();
 
       setObstacles((previousObstacles) => [...previousObstacles, newObstacle]);
-    }, 800);
+    }, OBSTACLES_CREATION_FRAME);
 
     return () => {
       clearInterval(obstaclesLoop);
