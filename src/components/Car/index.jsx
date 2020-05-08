@@ -1,4 +1,5 @@
 import React, { useEffect, useState, useContext } from 'react';
+import PropTypes from 'prop-types';
 
 import GameplayContext from '../../context/gameplay';
 
@@ -28,6 +29,10 @@ const Car = ({ checkCarPositioning }) => {
       <CarImage carDirection={carDirection} />
     </Container>
   );
+};
+
+Car.propTypes = {
+  checkCarPositioning: PropTypes.func.isRequired,
 };
 
 export default Car;

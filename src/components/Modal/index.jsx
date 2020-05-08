@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import {
   FormContainer,
@@ -28,6 +29,10 @@ const Modal = ({ onStartGame }) => {
       </ModalContainer>
     </>
   );
+};
+
+Modal.propTypes = {
+  onStartGame: PropTypes.func.isRequired,
 };
 
 export default Modal;

@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useContext } from 'react';
+import PropTypes from 'prop-types';
 
 import GameplayContext from '../../context/gameplay';
 
@@ -8,7 +9,7 @@ import { Container } from './styles';
 
 const OBSTACLES_LOOP_FRAME = 130;
 const OBSTACLES_CREATION_FRAME = 800;
-const HIT_POSITION = 7;
+const HIT_POSITION = 8;
 const LAST_OBSTACLE_POSITION = 12;
 const NEXT_OBSTACLE_POSITION_MULT = 1.3;
 
@@ -95,6 +96,11 @@ const ObstaclesContainer = ({ checkObstaclesPositioning, hittedObstacles }) => {
       ))}
     </Container>
   ) : null;
+};
+
+ObstaclesContainer.propTypes = {
+  checkObstaclesPositioning: PropTypes.func.isRequired,
+  hittedObstacles: PropTypes.instanceOf(Set).isRequired,
 };
 
 export default ObstaclesContainer;

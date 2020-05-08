@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import { contentCdn } from '../../styles/content';
 
@@ -12,6 +13,12 @@ const Obstacle = ({ imageIndex, position, roadPosition }) => {
       <ObstacleImage src={imagemPath} position={position} roadPosition={roadPosition} />
     </Container>
   );
+};
+
+Obstacle.propTypes = {
+  imageIndex: PropTypes.number.isRequired,
+  position: PropTypes.number.isRequired,
+  roadPosition: PropTypes.number.isRequired,
 };
 
 export default Obstacle;
