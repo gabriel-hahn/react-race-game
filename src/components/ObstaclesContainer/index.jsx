@@ -59,8 +59,11 @@ const ObstaclesContainer = ({ checkObstaclesPositioning, hittedObstacles }) => {
       obstaclesLoop = setInterval(() => {
         setObstacles((previousObstacles) => {
           const obstaclesUpdated = updateObstaclesPosition(previousObstacles);
+          const nearObstacles = filterHitCheckObstacles(obstaclesUpdated);
 
-          checkObstaclesPositioning(filterHitCheckObstacles(obstaclesUpdated));
+          if (nearObstacles.length > 0) {
+            checkObstaclesPositioning(filterHitCheckObstacles(obstaclesUpdated));
+          }
 
           return obstaclesUpdated;
         });

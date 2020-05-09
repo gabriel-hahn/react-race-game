@@ -1,9 +1,9 @@
 import styled from 'styled-components';
 
-export const Container = styled.section`
+export const Container = styled.div`
   display: flex;
   position: absolute;
-  justify-content: space-between;
+  justify-content: space-evenly;
   width: 65vw;
   margin: 2rem;
 `;
