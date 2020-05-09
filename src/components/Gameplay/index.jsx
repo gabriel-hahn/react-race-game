@@ -11,6 +11,7 @@ import ObstaclesContainer from '../ObstaclesContainer';
 import { Container } from './styles';
 
 const LAP_INTERVAL = 20000;
+const MAX_LAPS = 10;
 const hittedObstacles = new Set();
 let carPosition = controls.middle;
 let lapInterval = null;
@@ -19,6 +20,7 @@ const Gameplay = () => {
   const {
     finished,
     lifes,
+    laps,
     paused,
     dispatch,
   } = useContext(GameplayContext);
@@ -36,6 +38,12 @@ const Gameplay = () => {
       clearInterval(lapInterval);
     };
   }, [paused, finished]);
+
+  useEffect(() => {
+    if (laps === MAX_LAPS) {
+      dispatch({ type: GameplayActions.FINISH_GAME });
+    }
+  }, [laps]);
 
   useEffect(() => {
     if (lifes <= 0) {
