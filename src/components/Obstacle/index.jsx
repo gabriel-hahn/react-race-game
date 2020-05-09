@@ -1,16 +1,17 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { contentCdn } from '../../styles/content';
+import Obstacle1 from '../../assets/images/obstacle_1.png';
+import Obstacle2 from '../../assets/images/obstacle_2.png';
 
 import { Container, ObstacleImage } from './styles';
 
 const Obstacle = ({ imageIndex, position, roadPosition }) => {
-  const imagemPath = contentCdn[`obstacle_${imageIndex}`];
+  const image = imageIndex === 1 ? Obstacle1 : Obstacle2;
 
   return (
     <Container>
-      <ObstacleImage src={imagemPath} position={position} roadPosition={roadPosition} />
+      <ObstacleImage src={image} position={position} roadPosition={roadPosition} />
     </Container>
   );
 };

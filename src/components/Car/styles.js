@@ -1,7 +1,8 @@
 import styled from 'styled-components';
 
+import Car from '../../assets/images/car.png';
+
 import { controls } from '../../enums/CarControls';
-import { contentCdn } from '../../styles/content';
 
 export const Container = styled.div`
   display: flex;
@@ -12,7 +13,7 @@ export const Container = styled.div`
 `;
 
 export const CarImage = styled.img.attrs({
-  src: `${contentCdn.car}`,
+  src: `${Car}`,
 })`
   height: 270px;
   width: 270px;

@@ -24,7 +24,7 @@ const Gameplay = () => {
   } = useContext(GameplayContext);
 
   useEffect(() => {
-    if (paused) {
+    if (paused || finished) {
       clearInterval(lapInterval);
     } else {
       lapInterval = setInterval(() => {
@@ -35,7 +35,7 @@ const Gameplay = () => {
     return () => {
       clearInterval(lapInterval);
     };
-  }, [paused]);
+  }, [paused, finished]);
 
   useEffect(() => {
     if (lifes <= 0) {

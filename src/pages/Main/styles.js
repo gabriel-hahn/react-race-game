@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-import { contentCdn } from '../../styles/content';
+import RoadImage from '../../assets/images/road.gif';
 
 export const Container = styled.div`
   display: flex;
@@ -13,7 +13,7 @@ export const BackgroundContainer = styled.div`
   top: 0;
   height: 100%;
   width: 100%;
-  background-image: url(${contentCdn.roadBackground});
+  background-image: url(${RoadImage});
   background-position: center;
   background-repeat: repeat-x;
   filter: blur(8px) grayscale(5);
