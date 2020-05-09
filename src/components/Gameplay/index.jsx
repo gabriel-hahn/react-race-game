@@ -1,4 +1,4 @@
-import React, { useEffect, useContext } from 'react';
+import React, { useEffect, useContext, memo } from 'react';
 
 import GameplayContext, { Actions as GameplayActions } from '../../context/gameplay';
 import { controls } from '../../enums/CarControls';
@@ -91,4 +91,4 @@ const Gameplay = () => {
   );
 };
 
-export default Gameplay;
+export default memo(Gameplay);

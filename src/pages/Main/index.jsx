@@ -54,7 +54,7 @@ const Main = () => {
     <Container>
       <BackgroundContainer />
       {(!startGame && !isCounterToStart) && <Modal onStartGame={handleStartCounter} />}
-      {(!!paused || !!isCounterToStart) && <Alert content={paused ? 'Pausado' : startCounter} />}
+      {(!!paused || !!isCounterToStart) && <Alert content={paused ? 'Pausado' : startCounter.toString()} />}
       {!!startGame && <Gameplay />}
     </Container>
   );
