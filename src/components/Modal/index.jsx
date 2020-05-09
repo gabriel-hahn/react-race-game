@@ -30,7 +30,7 @@ const Modal = ({ onStartGame }) => {
         <FormContainer>
           <InputTitle>Nome</InputTitle>
           <InputDescription onChange={handleInputNameChanged} placeholder="Ex: Airton Senna" />
-          <StartButton onClick={handleStartGame}>Iniciar Corrida</StartButton>
+          <StartButton disabled={!username} onClick={handleStartGame}>Iniciar Corrida</StartButton>
         </FormContainer>
       </ModalContainer>
     </>

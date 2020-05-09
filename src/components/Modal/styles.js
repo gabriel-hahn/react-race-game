@@ -43,12 +43,13 @@ export const InputDescription = styled.input`
 `;
 
 export const StartButton = styled.button`
-  background-color: #333;
+  background-color: ${(props) => (props.disabled ? '#999' : '#333')};
   font-size: 1rem;
   height: 2.5rem;
   color: #fff;
   border-radius: 5px;
   transition: all 0.2s;
+  pointer-events: ${(props) => (props.disabled ? 'none' : 'all')};
 
   &:hover {
     background-color: #242424;
