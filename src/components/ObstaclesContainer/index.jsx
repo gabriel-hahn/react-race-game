@@ -20,11 +20,6 @@ const ObstaclesContainer = ({ checkObstaclesPositioning, hittedObstacles }) => {
   const [obstacles, setObstacles] = useState([]);
   const { paused } = useContext(GameplayContext);
 
-  useEffect(() => {
-    setObstacles((previousObstacles) => previousObstacles
-      .filter((obstacle) => !hittedObstacles.has(obstacle.id)));
-  }, [hittedObstacles.size]);
-
   const updateObstaclesPosition = (previousObstacles) => (
     previousObstacles
       .filter((obstacle) => obstacle.position <= LAST_OBSTACLE_POSITION)
@@ -47,9 +42,10 @@ const ObstaclesContainer = ({ checkObstaclesPositioning, hittedObstacles }) => {
     };
   };
 
-  const filterHitCheckObstacles = (previousObstacles) => (
-    previousObstacles.filter((obstacle) => obstacle.position >= HIT_POSITION)
-  );
+  useEffect(() => {
+    setObstacles((previousObstacles) => previousObstacles
+      .filter((obstacle) => !hittedObstacles.has(obstacle.id)));
+  }, [hittedObstacles.size]);
 
   useEffect(() => {
     if (paused) {
@@ -57,16 +53,7 @@ const ObstaclesContainer = ({ checkObstaclesPositioning, hittedObstacles }) => {
       clearInterval(obstaclesCreation);
     } else {
       obstaclesLoop = setInterval(() => {
-        setObstacles((previousObstacles) => {
-          const obstaclesUpdated = updateObstaclesPosition(previousObstacles);
-          const nearObstacles = filterHitCheckObstacles(obstaclesUpdated);
-
-          if (nearObstacles.length > 0) {
-            checkObstaclesPositioning(filterHitCheckObstacles(obstaclesUpdated));
-          }
-
-          return obstaclesUpdated;
-        });
+        setObstacles((previousObstacles) => updateObstaclesPosition(previousObstacles));
       }, OBSTACLES_LOOP_FRAME);
 
       obstaclesCreation = setInterval(() => {
@@ -81,6 +68,14 @@ const ObstaclesContainer = ({ checkObstaclesPositioning, hittedObstacles }) => {
       clearInterval(obstaclesCreation);
     };
   }, [paused]);
+
+  useEffect(() => {
+    const mightHitObstacles = obstacles.filter((obstacle) => obstacle.position >= HIT_POSITION);
+
+    if (mightHitObstacles.length > 0) {
+      checkObstaclesPositioning(mightHitObstacles);
+    }
+  }, [obstacles]);
 
   return obstacles.length > 0 ? (
     <Container>
