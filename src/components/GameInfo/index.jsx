@@ -9,8 +9,8 @@ const GameInfo = () => {
 
   return (
     <Container>
-      <InfoText>{lifes} Lifes</InfoText>
-      <InfoText>Lap {laps}</InfoText>
+      <InfoText>{lifes} {+lifes === 1 ? 'vida' : 'vidas'}</InfoText>
+      <InfoText>{+laps > 1 ? 'Voltas' : 'Volta'} {laps}</InfoText>
     </Container>
   );
 };

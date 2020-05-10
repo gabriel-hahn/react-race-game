@@ -11,9 +11,9 @@ const FinishedModal = () => {
     <>
       <BackgroundContainer />
       <Container>
-        <InputTitle>{username} - {lifes <= 0 ? 'You lose' : 'You win'}</InputTitle>
-        <InputTitle>{laps} Laps</InputTitle>
-        <InputTitle>{lifes} Lifes</InputTitle>
+        <InputTitle>{username} - {lifes <= 0 ? 'Você perdeu :/' : 'Você ganhou!'}</InputTitle>
+        <InputTitle>{laps} Volta(s)</InputTitle>
+        <InputTitle>{lifes} Vida(s)</InputTitle>
       </Container>
     </>
   );
