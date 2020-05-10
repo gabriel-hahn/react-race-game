@@ -20,25 +20,25 @@ const Main = () => {
 
   const action = useKeyboardControls();
 
-  const handleStartGameplay = () => {
-    setStartCounter(3);
-    setIsCounterToStart(false);
-    clearInterval(startGameInterval);
-
-    dispatch({ type: GameplayActions.START_GAME, payload: username });
-  };
-
   useEffect(() => {
     if (action === controls.pause && startGame) {
       dispatch({ type: GameplayActions.PAUSE_CONTINUE });
     }
-  }, [action]);
+  }, [action, dispatch, startGame]);
 
   useEffect(() => {
+    const handleStartGameplay = () => {
+      setStartCounter(3);
+      setIsCounterToStart(false);
+      clearInterval(startGameInterval);
+
+      dispatch({ type: GameplayActions.START_GAME, payload: username });
+    };
+
     if (startCounter === 0) {
       handleStartGameplay();
     }
-  }, [startCounter]);
+  }, [startCounter, dispatch]);
 
   const handleStartCounter = (name) => {
     setIsCounterToStart(true);
