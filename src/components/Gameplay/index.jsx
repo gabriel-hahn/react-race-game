@@ -78,7 +78,7 @@ const Gameplay = () => {
   return (
     <>
       {finished ? <FinishedModal /> : (
-        <Container>
+        <Container data-testid="gameplay">
           <GameInfo />
           <ObstaclesContainer
             hittedObstacles={hittedObstacles}

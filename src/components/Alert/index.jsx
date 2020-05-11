@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { AlertContainer, AlertText } from './styles';
 
 const Alert = ({ content }) => (
-  <AlertContainer>
+  <AlertContainer data-testid="alert">
     <AlertText>{content}</AlertText>
   </AlertContainer>
 );
