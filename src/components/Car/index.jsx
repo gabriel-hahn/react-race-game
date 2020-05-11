@@ -26,7 +26,7 @@ const Car = ({ checkCarPositioning }) => {
 
   return (
     <Container>
-      <CarImage carDirection={carDirection} />
+      <CarImage data-testid="car-image" carDirection={carDirection} />
     </Container>
   );
 };

@@ -1,17 +1,17 @@
 import React from 'react';
 import { render, fireEvent, wait } from '@testing-library/react';
 
-import { GameplayProvider } from '../../context/gameplay';
+import { GameplayProvider, initialState } from '../../context/gameplay';
 import Main from '../../pages/Main';
 
 let component;
 
-const initialState = {
-  startGame: false,
+const contextState = {
+  ...initialState,
   dispatch: jest.fn(),
 };
 
-function renderComponent(state = initialState) {
+function renderComponent(state = contextState) {
   component = render(
     <GameplayProvider value={state}>
       <Main />

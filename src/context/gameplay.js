@@ -12,7 +12,7 @@ export const Actions = {
   RESTART: 'RESTART',
 };
 
-const initialState = {
+export const initialState = {
   paused: false,
   finished: false,
   startGame: false,
@@ -40,8 +40,8 @@ const gameplayReducer = (state = initialState, action) => {
   }
 };
 
-export const GameplayProvider = ({ children }) => {
-  const [state, dispatch] = useReducer(gameplayReducer, initialState);
+export const GameplayProvider = ({ children, value = initialState }) => {
+  const [state, dispatch] = useReducer(gameplayReducer, value);
 
   const contextValue = useMemo(() => ({
     ...state,
@@ -57,6 +57,18 @@ export const GameplayProvider = ({ children }) => {
 
 GameplayProvider.propTypes = {
   children: PropTypes.element.isRequired,
+  value: PropTypes.shape({
+    paused: PropTypes.bool.isRequired,
+    finished: PropTypes.bool.isRequired,
+    startGame: PropTypes.bool.isRequired,
+    username: PropTypes.string.isRequired,
+    lifes: PropTypes.number.isRequired,
+    laps: PropTypes.number.isRequired,
+  }),
+};
+
+GameplayProvider.defaultProps = {
+  value: initialState,
 };
 
 export default GameplayContext;
