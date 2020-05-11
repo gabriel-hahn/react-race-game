@@ -10,7 +10,7 @@ const FinishedModal = () => {
   return (
     <>
       <BackgroundContainer />
-      <Container>
+      <Container data-testid="finish-modal-container">
         <InputTitle>{username} - {lifes <= 0 ? 'Você perdeu :/' : 'Você ganhou!'}</InputTitle>
         <InputTitle>{laps} Volta(s)</InputTitle>
         <InputTitle>{lifes} Vida(s)</InputTitle>

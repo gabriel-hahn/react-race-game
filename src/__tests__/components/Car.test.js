@@ -1,4 +1,3 @@
-/* eslint-disable react/jsx-props-no-spreading */
 import React from 'react';
 import { render, fireEvent } from '@testing-library/react';
 
@@ -47,7 +46,7 @@ describe('Car component', () => {
     expect(props.checkCarPositioning).toHaveBeenCalledTimes(0);
   });
 
-  it('Should not change car position when game is paused', async () => {
+  it('Should not change car position when game is paused', () => {
     const state = { ...contextState, paused: true };
 
     renderComponent(state);
