@@ -31,5 +31,8 @@ interferindo também na criação de um turbo para o carro (aumentaria a velocid
 aconteceu com o modo multiplayer, uma das últimas opções de implementação. Infelizmente não consegui desenvolver estes tópicos,
 porém esta anotado como ideia de uma implementação futura deste projeto, talvez deixe o jogo bem mais interessante :)
 
+Utilizei GraphQL e NodeJS para salvar a pontuação dos jogadores e mostrar como se sairam os últimos que jogaram na tela de
+'Pontuações' - mesmo que somente o nome, a quantidade de vidas que terminou o jogo e quantas voltas completou.
+
 Acredito que desenvolvi todos os bônus restantes e fico no aguardo do feedback técnico de vocês a respeito do projeto! Obrigado
 
