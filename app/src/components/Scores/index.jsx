@@ -13,11 +13,11 @@ import {
 const Scores = ({ scores }) => (
   <>
     {!scores ? (
-      <LoadingContainer>
+      <LoadingContainer data-testid="loading-container">
         <RotateSpinner size={30} color="#171717" />
       </LoadingContainer>
       ) : (
-      <ScoresContainer>
+      <ScoresContainer data-testid="scores-container">
         <ScoresDetails>
           <ScoreDescription>Nome</ScoreDescription>
           <ScoreLaps>Voltas</ScoreLaps>
