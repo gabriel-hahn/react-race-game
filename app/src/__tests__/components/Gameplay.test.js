@@ -1,6 +1,8 @@
 import React from 'react';
 import { render } from '@testing-library/react';
+import { MockedProvider } from '@apollo/react-testing';
 
+import { addUserMutation } from '../../graphql/mutations/users';
 import { GameplayProvider, initialState } from '../../context/gameplay';
 import Gameplay from '../../components/Gameplay';
 
@@ -11,11 +13,22 @@ const contextState = {
   dispatch: jest.fn(),
 };
 
+const mocks = [
+  {
+    request: {
+      query: addUserMutation,
+    },
+    result: { data: { id: '1' } },
+  },
+];
+
 function renderComponent(state = contextState) {
   component = render(
-    <GameplayProvider value={state}>
-      <Gameplay />
-    </GameplayProvider>,
+    <MockedProvider addTypename={false} mocks={mocks}>
+      <GameplayProvider value={state}>
+        <Gameplay />
+      </GameplayProvider>
+    </MockedProvider>,
   );
 }
 

@@ -1,4 +1,5 @@
 import React from 'react';
+import { MockedProvider } from '@apollo/react-testing';
 import { render, fireEvent, wait } from '@testing-library/react';
 
 import { GameplayProvider, initialState } from '../../context/gameplay';
@@ -13,9 +14,11 @@ const contextState = {
 
 function renderComponent(state = contextState) {
   component = render(
-    <GameplayProvider value={state}>
-      <Main />
-    </GameplayProvider>,
+    <MockedProvider addTypename={false}>
+      <GameplayProvider value={state}>
+        <Main />
+      </GameplayProvider>
+    </MockedProvider>
   );
 }
 

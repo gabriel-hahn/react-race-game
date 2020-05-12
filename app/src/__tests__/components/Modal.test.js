@@ -1,17 +1,34 @@
 import React from 'react';
 import { render, fireEvent } from '@testing-library/react';
+import { MockedProvider } from '@apollo/react-testing';
 
+import { getUsersQuery } from '../../graphql/queries/users';
 import Modal from '../../components/Modal';
 
 const props = {
   onStartGame: jest.fn(),
 };
 
+const mocks = [
+  {
+    request: {
+      query: getUsersQuery,
+    },
+    result: { data: {
+      users: [{ id: 1, name: 'Gabriel', laps: 2, lifes: 10 }],
+    } },
+  },
+];
+
 let component;
 
 describe('GameInfo component', () => {
   beforeEach(() => {
-    component = render(<Modal {...props} />);
+    component = render((
+      <MockedProvider addTypename={false} mocks={mocks}>
+        <Modal {...props} />
+      </MockedProvider>
+    ));
   });
 
   it('Should render Modal component as snapshot', () => {
