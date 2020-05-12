@@ -27,7 +27,7 @@ const RootQuery = new GraphQLObjectType({
     users: {
       type: new GraphQLList(UserType),
       resolve(){
-        return User.find({});
+        return User.find({}).sort({'date': -1}).limit(5);
       }
     },
   }
