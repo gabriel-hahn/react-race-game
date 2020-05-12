@@ -1,5 +1,7 @@
 import React, { useEffect, useContext, memo } from 'react';
+import { useMutation } from "@apollo/react-hooks";
 
+import { addUserMutation } from '../../graphql/mutations/users';
 import GameplayContext, { Actions as GameplayActions } from '../../context/gameplay';
 import { controls } from '../../enums/CarControls';
 
@@ -22,8 +24,14 @@ const Gameplay = () => {
     lifes,
     laps,
     paused,
+    username,
     dispatch,
   } = useContext(GameplayContext);
+  const [addUser] = useMutation(addUserMutation);
+
+  const saveUserScore = () => {
+    addUser({ variables: {name: username, lifes, laps} });
+  };
 
   useEffect(() => {
     if (paused || finished) {
@@ -42,6 +50,7 @@ const Gameplay = () => {
   useEffect(() => {
     if (laps === MAX_LAPS) {
       dispatch({ type: GameplayActions.FINISH_GAME });
+      saveUserScore();
 
       setTimeout(() => {
         dispatch({ type: GameplayActions.RESTART });
@@ -52,6 +61,7 @@ const Gameplay = () => {
   useEffect(() => {
     if (lifes <= 0) {
       dispatch({ type: GameplayActions.FINISH_GAME });
+      saveUserScore();
 
       setTimeout(() => {
         dispatch({ type: GameplayActions.RESTART });

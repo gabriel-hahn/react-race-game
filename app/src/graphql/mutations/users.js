@@ -1,15 +1,10 @@
 import gql from 'graphql-tag';
 
 const addUserMutation = gql`
-  mutation Mutation {
-    addUser($name: String!, $lifes: Int!, $laps: Int!) {
-      id,
-      name,
-      lifes,
-      laps,
-      date
+  mutation Mutation($name: String!, $lifes: Int!, $laps: Int!) {
+    addUser(name: $name, lifes: $lifes, laps: $laps) {
+      id
     }
-  }
-`;
+}`;
 
-module.exports = { addUserMutation };
+export { addUserMutation };
