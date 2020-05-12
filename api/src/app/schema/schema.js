@@ -2,24 +2,12 @@ const {
   GraphQLSchema,
   GraphQLObjectType,
   GraphQLList,
-  GraphQLID,
   GraphQLNonNull,
   GraphQLString,
   GraphQLInt,
 } = require('graphql');
-
+const UserType = require('./types/user');
 const User = require('../models/User');
-
-const UserType = new GraphQLObjectType({
-  name: 'User',
-  fields: () => ({
-    id: { type: GraphQLID },
-    name: { type: GraphQLString },
-    date: { type: GraphQLString },
-    lifes: { type: GraphQLInt },
-    laps: { type: GraphQLInt },
-  })
-});
 
 const RootQuery = new GraphQLObjectType({
   name: 'RootQueryType',
