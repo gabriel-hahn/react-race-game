@@ -3,8 +3,8 @@ import gql from 'graphql-tag';
 const getUsersQuery = gql`
   {
     users {
+      id
       name
-      date
       laps
       lifes
     }

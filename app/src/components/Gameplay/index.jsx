@@ -1,5 +1,5 @@
 import React, { useEffect, useContext, memo } from 'react';
-import { useMutation } from "@apollo/react-hooks";
+import { useMutation } from '@apollo/react-hooks';
 
 import { addUserMutation } from '../../graphql/mutations/users';
 import GameplayContext, { Actions as GameplayActions } from '../../context/gameplay';

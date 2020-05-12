@@ -26,7 +26,7 @@ export const FormContainer = styled.div`
   flex-direction: column;
   justify-content: space-between;
   width: 17rem;
-  height: 12rem;
+  height: 16rem;
   padding: 1rem;
   background-color: #fff;
   border-radius: 5px;
@@ -42,13 +42,19 @@ export const InputDescription = styled.input`
   font-size: 0.9rem;
 `;
 
-export const StartButton = styled.button`
+export const ButtonsContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
+
+export const Button = styled.button`
   background-color: ${(props) => (props.disabled ? '#999' : '#333')};
   font-size: 1rem;
   height: 2.5rem;
   color: #fff;
   border-radius: 5px;
   transition: all 0.2s;
+  margin-top: 0.3rem;
   pointer-events: ${(props) => (props.disabled ? 'none' : 'all')};
 
   &:hover {

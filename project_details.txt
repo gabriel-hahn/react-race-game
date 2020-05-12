@@ -36,3 +36,6 @@ Utilizei GraphQL e NodeJS para salvar a pontuação dos jogadores e mostrar como
 
 Acredito que desenvolvi todos os bônus restantes e fico no aguardo do feedback técnico de vocês a respeito do projeto! Obrigado
 
+Obs: Lembrando que o projeto está em um server free do Heroku, então talvez demore algum tempo até subir o projeto na primeira
+vez que for acessado.
+
