@@ -5,9 +5,11 @@ export const Container = styled.div`
   position: absolute;
   justify-content: space-evenly;
   width: 65vw;
-  margin: 2rem;
+  margin-top: 3rem;
+  left: 50%;
+  transform: translate(-50%, -50%);
 `;
 
 export const InfoText = styled.p`
-  font-size: 2rem;
+  font-size: 2.5rem;
 `;

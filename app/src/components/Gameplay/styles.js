@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
 import RoadImage from '../../assets/images/road.gif';
+import { device } from '../../styles/variables';
 
 export const Container = styled.div`
   height: 100vh;
@@ -9,4 +10,8 @@ export const Container = styled.div`
   background-position: center;
   background-repeat: no-repeat;
   z-index: 1;
+
+  @media ${device.laptopM} {
+    width: 100vw;
+  }
 `;

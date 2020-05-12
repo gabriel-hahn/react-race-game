@@ -1,4 +1,7 @@
-export const colors = {
-  white: '#FFF',
-  fontBlackColor: '#171717',
+const size = {
+  laptopM: '1200px',
+};
+
+export const device = {
+  laptopM: `(max-width: ${size.laptopM})`,
 };

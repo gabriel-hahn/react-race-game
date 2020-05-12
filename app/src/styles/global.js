@@ -1,7 +1,5 @@
 import { createGlobalStyle } from 'styled-components';
 
-import { colors } from './variables';
-
 export default createGlobalStyle`
   * {
     padding: 0;
@@ -13,7 +11,7 @@ export default createGlobalStyle`
 
   body {
     font-size: 62.5%;
-    color: ${colors.fontBlackColor};
+    color: #171717;
     font-family: 'Balsamiq Sans', cursive;
     text-rendering: optimizeLegibility !important;
     -webkit-font-smoothing: antialiased !important;
