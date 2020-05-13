@@ -10,7 +10,7 @@ pode colidir uma vez com algum obstáculo, pois na segunda vez o seu carro quebr
 Comandos:
 
 Esc ou Spacebar: Pausa o jogo.
-A ou Seta para baixo: Move o carro para a pista da esquerda.
+A ou Seta para esquerda: Move o carro para a pista da esquerda.
 S ou Seta para cima: Move o carro para a pista do meio.
 D ou Seta para direita: Move o carro para a pista da direita.
 
@@ -32,10 +32,12 @@ aconteceu com o modo multiplayer, uma das últimas opções de implementação. 
 porém esta anotado como ideia de uma implementação futura deste projeto, talvez deixe o jogo bem mais interessante :)
 
 Utilizei GraphQL e NodeJS para salvar a pontuação dos jogadores e mostrar como se sairam os últimos que jogaram na tela de
-'Pontuações' - mesmo que somente o nome, a quantidade de vidas que terminou o jogo e quantas voltas completou.
+'Pontuações' - mesmo que mostrando somente o nome, a quantidade de vidas que terminou o jogo e quantas voltas completou.
 
 Acredito que desenvolvi todos os bônus restantes e fico no aguardo do feedback técnico de vocês a respeito do projeto! Obrigado
 
 Obs: Lembrando que o projeto está em um server free do Heroku, então talvez demore algum tempo até subir o projeto na primeira
 vez que for acessado.
+
+Link: https://react-race-game.herokuapp.com/
 
