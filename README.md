@@ -2,7 +2,7 @@
 
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/95fd98f98e0546879e65ba3d1a0b1d7f)](https://www.codacy.com/manual/gabriel_hahn/react-race-game?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=gabriel-hahn/react-race-game&amp;utm_campaign=Badge_Grade) [![contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)](https://github.com/gabriel-hahn/react-race-game/pulls) [![Bugs](https://img.shields.io/github/issues/gabriel-hahn/react-race-game/bug.svg)](https://github.com/gabriel-hahn/react-race-game/issues?utf8=?&q=is%3Aissue+is%3Aopen+label%3Abug) [![The MIT License](https://img.shields.io/badge/license-MIT-blue.svg?style=flat-square)](http://opensource.org/licenses/MIT)
 
-A Race game developer using React, Styled Components, NodeJS, GraphQL and much fun :blue_car: :grin:
+A Race game developed in one week using React, Styled Components, NodeJS, GraphQL and much fun :blue_car: :grin:
 
 NodeJS |Express|GraphQL|Mongoose|React  |@Apollo|
 -------|-------|-------|--------|-------|-------|
